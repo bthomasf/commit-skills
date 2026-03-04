@@ -146,7 +146,17 @@ git diff-tree --no-commit-id --name-status -r HEAD  # 文件变更状态
 
 使用 StrReplace 或 Write 工具将记录**追加到 `COMMIT-LOG.md` 文件末尾**（不是插入顶部）。追加到末尾可以避免多人协作时的 git 合并冲突。
 
-### 5.5 完成
+### 5.5 登记活跃仓库
+
+将当前仓库路径追加到 `~/.daily-active-repos`，供 daily-report-skill 快速定位今日活跃仓库：
+
+```bash
+echo "$(date +%Y-%m-%d)|$(git rev-parse --show-toplevel)" >> ~/.daily-active-repos
+```
+
+此文件无需去重，daily-report-skill 读取时会自行去重。文件不存在时上述命令会自动创建。
+
+### 5.6 完成
 
 输出摘要：
 
